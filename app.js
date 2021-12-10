@@ -1,10 +1,14 @@
+import { renderGoblin } from './render-utils.js';
+
 // import functions and grab DOM elements
+
+
 const adventurerDataEl = document.getElementById('adventurer-data');
 const defeatedNumberEl = document.getElementById('defeated-number');
 const defeatedListEl = document.getElementById('defeat-list');
 const adventurerHpEl = document.getElementById('adventurer-hp');
 const form = document.querySelector('form');
-const goblinsEl = document.getElementById('goblins');
+const goblinsListEl = document.getElementById('goblins');
 
 // let state
 let defeatedNumber = 0;
@@ -27,9 +31,21 @@ form.addEventListener('submit', (e) => {
         hp: Math.floor(Math.random() * 3),
     };
     goblins.push(newGoblin);
+    form.reset();
+    console.log(goblinName);
 
-    console.log(newGoblin);
+    displayGoblins();
 });
+
+function displayGoblins(){
+    
+    
+    for (let goblin of goblins){
+
+        const goblinsEl = renderGoblin(goblin);
+    }
+
+}
   // get user input
   // use user input to update state 
   // update DOM to reflect the new state
