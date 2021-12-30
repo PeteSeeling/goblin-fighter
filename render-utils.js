@@ -15,16 +15,9 @@ export function renderGoblin(goblinData){
 
     if (goblinData.hp < 0){
         goblinsEl.classList.add('dead');
-
-        goblinsEl.append(nameEl, faceEl, hpEl);
-
-        return goblinsEl;
-
-      
     }
-    console.log(goblinData.hp);
+    
 
-
-
-
+    goblinsEl.append(nameEl, faceEl, hpEl);
+    return goblinsEl;
 }
