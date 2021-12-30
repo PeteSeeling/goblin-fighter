@@ -1,14 +1,11 @@
 import { renderGoblin } from './render-utils.js';
 
 // import functions and grab DOM elements
-
-
-const adventurerDataEl = document.getElementById('adventurer-data');
-const defeatedNumberEl = document.getElementById('defeated-number');
-const defeatedListEl = document.getElementById('defeat-list');
-const adventurerHpEl = document.getElementById('adventurer-hp');
+const defeatedNumberEl = document.querySelector('#defeated-number');
+const adventurerHpEl = document.querySelector('#adventurer-hp');
 const form = document.querySelector('form');
-const goblinsListEl = document.getElementById('goblins');
+const goblinsListEl = document.querySelector('.goblins');
+
 
 // let state
 let defeatedNumber = 0;
@@ -28,24 +25,55 @@ form.addEventListener('submit', (e) => {
 
     const newGoblin = {
         name: goblinName,
-        hp: Math.floor(Math.random() * 3),
+        hp: 3
     };
     goblins.push(newGoblin);
     form.reset();
-    console.log(goblinName);
 
     displayGoblins();
 });
 
 function displayGoblins(){
-    
+    goblinsListEl.textContent = '';
     
     for (let goblin of goblins){
 
         const goblinsEl = renderGoblin(goblin);
-    }
 
+        if (goblin.hp > 0){
+            goblinsEl.addEventListener('click', () => {
+                if (Math.random() < .33) {
+                    goblin.hp--;
+                    alert(' You hit the goblin known as ' + goblin.name);
+                } else {
+                    alert(' you tried to hit ' + goblin.name + ' but you missed ');
+                }
+                if (Math.random() < .5) {
+                    adventurerHp--;
+                    alert(goblin.name + ' hit you ');
+                } else {
+                    alert(goblin.name + ' tried to hit you but missed! ');
+                }
+                if (goblin.hp === 0) {
+                    defeatedNumber++;
+                }
+                if (adventurerHp === 0) {
+                    alert(' Game Over! ');
+                }
+
+                adventurerHpEl.textContent = adventurerHp;
+                defeatedNumberEl.textContent = defeatedNumber;
+
+                displayGoblins();
+                
+            });
+        }
+        goblinsListEl.append(goblinsEl);
+    }
 }
+displayGoblins();
+
+
   // get user input
   // use user input to update state 
   // update DOM to reflect the new state

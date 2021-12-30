@@ -29,6 +29,8 @@ body {
     
     font-family: 'Titillium Web', sans-serif;
     background-color: var(--color2);
+    background-image: url('../assets/castle.png');
+    background-size: 110%;
 }
 
 main {
@@ -50,7 +52,7 @@ section {
     padding-bottom: var(--gutter);
     margin-top: var(--gutter);
     margin-bottom: var(--gutter);
-    border: solid 2px var(--color1);
+  
 }
 
 header {
@@ -89,37 +91,54 @@ footer {
     background-color: var(--color3);
     box-shadow: var(--shadow);
 }
+.adventurer{
+   
+    float:left;
+}
 .adventurer-data{
     display: flex;
-    border:solid 2px;
     font-size: 2rem;
 }
 .adventurer-power{
     display: flex;
     font-size: 2rem;
-    border:solid 2px;
-    border-color: red;
     width:20%;
-    background-color: royalblue;
-
 }
 #adventurer-img{
     display: flex;
-    height:250px;
+   margin-right:200px;
+   margin-top: 20%;
+    height:400px;
+
 }
 .goblin-data{
     display:flex;
+    flex-direction: column;
+    justify-content: center;
     font-size: 2rem;
-    border: solid 2px;
-    border-color: slateblue;
+    
+    
+    width: 50%;
 
 }
 .goblins{
     font-size: 2rem;
-    border: solid 2px;
-    border-color: rgb(114, 9, 14);
+    
     height: 300px;
     margin-top: 30px;
     padding-top: 30px;
     justify-content: space-around;
+}
+.goblin{
+    display:flex;
+    flex-direction: row;
+    border:1px solid;
+    border-color: rgb(255, 255, 255);
+    background-color: royalblue;
+}
+.defeated-enemies{
+    border: 1px solid;
+    border-color:rgb(139, 214, 172);
+    background-color: rgb(139, 214, 172);
+    height:150px;
 }
